@@ -1,0 +1,47 @@
+class Solution {
+public:
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+        vector<int> ans;
+        int row=matrix.size();
+        int col=matrix[0].size();
+        int count=0;
+        int total=row*col;
+int startinrow=0;
+        int startincol=0;
+int endinrow=row-1;
+int endincol=col-1;
+
+while(count<total &&startinrow<=endinrow && startincol<=endincol){
+    for (int i = startincol; i <= endincol; i++) {
+                ans.push_back(matrix[startinrow][i]);
+                count++;
+            }
+            startinrow++;
+        for (int i = startinrow; i <= endinrow; i++) {
+                ans.push_back(matrix[i][endincol]);
+                count++;
+            }
+            endincol--;
+
+            if (startinrow <= endinrow) {
+                for (int i = endincol; i >= startincol; i--) {
+                    ans.push_back(matrix[endinrow][i]);
+                    count++;
+                }
+                endinrow--;
+            }
+
+            if (startincol <= endincol) {
+                for (int i = endinrow; i >= startinrow; i--) {
+                    ans.push_back(matrix[i][startincol]);
+                    count++;
+                }
+                startincol++;
+            }
+        }
+return ans;
+    }
+
+
+
+};
